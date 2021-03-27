@@ -3,9 +3,14 @@ package towersim.aircraft;
 import towersim.util.*;
 import towersim.tasks.*;
 
+/**
+ * Mother class of all aircraft types
+ *
+ */
 public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickable {
-    protected final double LITRE_OF_FUEL_WEIGHT = 0.8;
 
+    public static final double LITRE_OF_FUEL_WEIGHT = 0.8;
+    //Weight of a litre of aviation fuel, in kilograms.
 
     private boolean emergencyState;
     //the state of emergency of the aircraft
