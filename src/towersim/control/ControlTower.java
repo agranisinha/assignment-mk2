@@ -51,6 +51,20 @@ public class ControlTower implements Tickable {
         return managedAircraft;
     }
 
+    public void addTerminal(Terminal terminal){
+        managedTerminals.add(terminal);
+    }
+
+    public List<Terminal> getTerminals(){
+        return managedTerminals;
+    }
+
+    public Gate findGateOfAircraft(Aircraft targetedAircraft){
+        //placeholder
+        return new Gate(-1);
+
+    }
+
 
 
 
