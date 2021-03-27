@@ -2,7 +2,7 @@ package towersim.ground;
 
 public class HelicopterTerminal extends Terminal{
 
-    protected HelicopterTerminal(int terminalNumber) {
+    public HelicopterTerminal(int terminalNumber) {
         super(terminalNumber);
     }
 }
