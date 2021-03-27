@@ -1,5 +1,6 @@
 package towersim.ground;
 
+import towersim.aircraft.AircraftType;
 import towersim.util.EmergencyState;
 import towersim.util.NoSpaceException;
 import towersim.util.NoSuitableGateException;
@@ -13,6 +14,7 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
     private List<Gate> gatesList = new ArrayList<Gate>();
     int terminalNumber;
     private boolean EmergencyState;
+    public AircraftType terminalType;
 
     protected Terminal(int terminalNumber) {
         this.terminalNumber = terminalNumber;
