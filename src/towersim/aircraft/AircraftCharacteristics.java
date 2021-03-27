@@ -8,7 +8,7 @@ public enum AircraftCharacteristics {
     ROBINSON_R44(AircraftType.HELICOPTER, 658, 190, 4, 0),
     BOEING_787(AircraftType.AIRPLANE, 119950, 126206, 242, 0),
     FOKKER_100(AircraftType.AIRPLANE, 24375, 13365, 97, 0),
-    SIKORSKY_SKYCRANE(AircraftType.HELICOPTER, 8724, 3328, 0, 0);
+    SIKORSKY_SKYCRANE(AircraftType.HELICOPTER, 8724, 3328, 0, 9100);
 
     //variables in each aircraftCharacteristics
     public final AircraftType type;

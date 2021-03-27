@@ -4,7 +4,7 @@ import towersim.util.*;
 import towersim.tasks.*;
 
 public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickable {
-    static double LITRE_OF_FUEL_WEIGHT = 0.8;
+    protected final double LITRE_OF_FUEL_WEIGHT = 0.8;
 
 
     private boolean emergencyState;
