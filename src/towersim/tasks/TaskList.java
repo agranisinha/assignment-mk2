@@ -3,11 +3,11 @@ package towersim.tasks;
 import java.util.*;
 
 public class TaskList {
-    private ArrayList<Task> listOfTasks;
+    private List<Task> listOfTasks;
     private int currentTask = 0;
 
     public TaskList(List<Task> tasks) {
-        listOfTasks = (ArrayList<Task>) tasks;
+        listOfTasks = tasks;
     }
 
     public Task getCurrentTask() {

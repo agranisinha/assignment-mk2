@@ -1,6 +1,7 @@
 package towersim.ground;
 
 import towersim.aircraft.Aircraft;
+import towersim.util.NoSpaceException;
 
 public class Gate {
     private int gateNumber;
@@ -10,8 +11,12 @@ public class Gate {
         this.gateNumber = gateNumber;
     }
 
-    public void parkAircraft(Aircraft aircraft) {
-        this.aircraftAtGate = aircraft;
+    public void parkAircraft(Aircraft aircraft) throws NoSpaceException {
+        if(aircraftAtGate ==null) {
+            this.aircraftAtGate = aircraft;
+        }else{
+            throw new NoSpaceException("There is already an aircraft at gate " + gateNumber);
+        }
         //parks a new aircraft at this gate
     }
 
@@ -24,11 +29,7 @@ public class Gate {
     }
 
     public boolean isOccupied() {
-        if (aircraftAtGate == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return aircraftAtGate != null;
     }
 
     public int getGateNumber() {
