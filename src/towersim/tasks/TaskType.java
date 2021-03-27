@@ -1,4 +1,5 @@
 package towersim.tasks;
+
 import java.lang.*;
 
 public enum TaskType {
@@ -8,10 +9,12 @@ public enum TaskType {
     LOAD("Aircraft in TAKEOFF are waiting on taxiways for a slot to take off."),
     TAKEOFF("WAIT tells an aircraft to stay stationary at a gate and not load any cargo.");
     private final String description;
-    TaskType(String description){
+
+    TaskType(String description) {
         this.description = description;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return this.description;
     }
 

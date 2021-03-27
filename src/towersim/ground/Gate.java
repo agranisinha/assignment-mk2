@@ -6,16 +6,16 @@ public class Gate {
     private int gateNumber;
     private Aircraft aircraftAtGate = null;
 
-    public Gate(int gateNumber){
+    public Gate(int gateNumber) {
         this.gateNumber = gateNumber;
     }
 
-    public void parkAircraft(Aircraft aircraft){
+    public void parkAircraft(Aircraft aircraft) {
         this.aircraftAtGate = aircraft;
         //parks a new aircraft at this gate
     }
 
-    public void aircraftLeaves(){
+    public void aircraftLeaves() {
         aircraftAtGate = null;
     }
 
@@ -23,18 +23,19 @@ public class Gate {
         return aircraftAtGate;
     }
 
-    public boolean isOccupied(){
-        if(aircraftAtGate == null){
+    public boolean isOccupied() {
+        if (aircraftAtGate == null) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    public int getGateNumber(){
+
+    public int getGateNumber() {
         return gateNumber;
     }
 
-    public String toString(){
+    public String toString() {
         return "";
     }
 

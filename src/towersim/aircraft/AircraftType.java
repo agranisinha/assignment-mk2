@@ -1,9 +1,9 @@
 package towersim.aircraft;
+
 import java.io.*;
 
 
-
-public enum AircraftType{
+public enum AircraftType {
 
     AIRPLANE,
     HELICOPTER

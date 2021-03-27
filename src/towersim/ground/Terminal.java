@@ -11,10 +11,9 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
     private List<Gate> gatesList = new ArrayList<Gate>();
     int terminalNumber;
 
-    protected Terminal(int terminalNumber){
+    protected Terminal(int terminalNumber) {
         this.terminalNumber = terminalNumber;
     }
-
 
 
 }
