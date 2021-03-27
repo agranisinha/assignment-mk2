@@ -1,11 +1,11 @@
 package towersim.util;
 
 public class NoSuitableGateException extends Exception {
-    public NoSuitableGateException(){
+    public NoSuitableGateException() {
         super();
     }
 
-    public NoSuitableGateException(String errorMessage){
+    public NoSuitableGateException(String errorMessage) {
         super(errorMessage);
     }
 

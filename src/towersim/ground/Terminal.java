@@ -14,7 +14,6 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
     private List<Gate> gatesList = new ArrayList<Gate>();
     int terminalNumber;
     private boolean EmergencyState;
-    public AircraftType terminalType;
 
     protected Terminal(int terminalNumber) {
         this.terminalNumber = terminalNumber;
@@ -68,7 +67,7 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
                     freeGates++;
                 }
             }
-            return (int) (freeGates *100 / gatesList.size());
+            return (int) ((1 - ((double) freeGates / gatesList.size())) * 100);
 
         }
     }

@@ -5,7 +5,6 @@ import towersim.tasks.*;
 
 /**
  * Mother class of all aircraft types
- *
  */
 public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickable {
 
@@ -25,10 +24,11 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Constructor
-     * @param callsign callsign of aircraft
+     *
+     * @param callsign        callsign of aircraft
      * @param characteristics enum aircraftcharacteristics including model, make, capacity etc
-     * @param tasks list of future tasks to complete
-     * @param fuelAmount current fuel amount of the aircraft
+     * @param tasks           list of future tasks to complete
+     * @param fuelAmount      current fuel amount of the aircraft
      */
     protected Aircraft(String callsign, AircraftCharacteristics characteristics, TaskList tasks, double fuelAmount) {
         this.callSign = callsign;

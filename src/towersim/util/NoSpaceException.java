@@ -1,11 +1,11 @@
 package towersim.util;
 
 public class NoSpaceException extends Exception {
-    public NoSpaceException(){
+    public NoSpaceException() {
         super();
     }
 
-    public NoSpaceException(String errorMessage){
+    public NoSpaceException(String errorMessage) {
         super(errorMessage);
     }
 }
