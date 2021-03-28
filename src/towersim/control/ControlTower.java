@@ -24,7 +24,8 @@ public class ControlTower implements Tickable {
 
     public void addAircraft(Aircraft aircraft) throws NoSuitableGateException {
 
-        if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT || aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
+        if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT ||
+                aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
             //try parking at  terminals else throw exception
             try {
                 Gate suitableGate = findUnoccupiedGate(aircraft);
@@ -48,12 +49,12 @@ public class ControlTower implements Tickable {
                         unoccupiedGate = currentSearched.findUnoccupiedGate();
                         return unoccupiedGate;
                     } catch (NoSuitableGateException noGateException) {
-
+                        throw noGateException;
                     }
 
                 }
             }
-            throw new NoSuitableGateException("No free gate of the specified type could be found");
+
             //is plane
 
         } else {
@@ -65,14 +66,15 @@ public class ControlTower implements Tickable {
                         unoccupiedGate = currentSearched.findUnoccupiedGate();
                         return unoccupiedGate;
                     } catch (NoSuitableGateException noGateException) {
-
+                        throw noGateException;
                     }
 
                 }
             }
-            throw new NoSuitableGateException("No free gate of the specified type could be found");
+
             //is helicopter
         }
+        throw new NoSuitableGateException();
     }
 
     public List<Aircraft> getAircraft() {
