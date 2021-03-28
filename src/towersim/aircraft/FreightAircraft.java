@@ -14,9 +14,9 @@ public class FreightAircraft extends Aircraft {
     }
 
     public int calculateOccupancyLevel() {
-        return (int) ((freightAmount / this.getCharacteristics().freightCapacity) * 100);
+        return (int) Math.round((freightAmount / this.getCharacteristics().freightCapacity) * 100);
     }
-    //returns the percentate of freight weight used
+    //returns the percentage of freight weight used
 
     public int getLoadingTime() {
         //returns number of ticks for freight load,

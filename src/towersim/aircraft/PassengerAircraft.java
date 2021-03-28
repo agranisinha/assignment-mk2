@@ -15,12 +15,15 @@ public class PassengerAircraft extends Aircraft {
     }
 
     public int calculateOccupancyLevel() {
-        return (int) passengerCount / this.getCharacteristics().passengerCapacity * 100;
+        return (int) Math.round(passengerCount / this.getCharacteristics().passengerCapacity * 100);
     }
 
     public int getLoadingTime() {
         //placeholder, do after completing tasks
-        return 0;
+        int passengerToBeLoaded = (int) this.getTaskList().getCurrentTask().getLoadPercent() *
+                this.getCharacteristics().passengerCapacity;
+        int loadingTicks = (int) Math.round(Math.log10(passengerToBeLoaded));
+        return loadingTicks;
     }
 
     public double getTotalWeight() {
