@@ -67,7 +67,7 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
                     freeGates++;
                 }
             }
-            return (int) (100 - ((double) freeGates / (double)gatesList.size()) * 100);
+            return (int)Math.round((100 - ((double) freeGates / (double)gatesList.size()) * 100));
 
         }
     }
