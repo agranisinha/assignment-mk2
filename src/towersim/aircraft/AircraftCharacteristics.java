@@ -19,7 +19,8 @@ public enum AircraftCharacteristics {
     //
 
     //constructor for each aircraftCharacteristics
-    AircraftCharacteristics(AircraftType type, int emptyWeight, double fuelCapacity, int passengerCapacity, int freightCapacity) {
+    AircraftCharacteristics(AircraftType type, int emptyWeight, double fuelCapacity,
+                            int passengerCapacity, int freightCapacity) {
         this.type = type;
         this.emptyWeight = emptyWeight;
         this.fuelCapacity = fuelCapacity;

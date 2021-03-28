@@ -30,7 +30,8 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
      * @param tasks           list of future tasks to complete
      * @param fuelAmount      current fuel amount of the aircraft
      */
-    protected Aircraft(String callsign, AircraftCharacteristics characteristics, TaskList tasks, double fuelAmount) {
+    protected Aircraft(String callsign, AircraftCharacteristics characteristics,
+                       TaskList tasks, double fuelAmount) {
         this.callSign = callsign;
         this.characteristics = characteristics;
         this.listOfTasks = tasks;

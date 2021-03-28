@@ -7,7 +7,8 @@ public class PassengerAircraft extends Aircraft {
     public static final double AVG_PASSENGER_WEIGHT = 90;
     private int passengerCount;
 
-    public PassengerAircraft(String callsign, AircraftCharacteristics characteristics, TaskList tasks, double fuelAmount, int numPassengers) {
+    public PassengerAircraft(String callsign, AircraftCharacteristics characteristics,
+                             TaskList tasks, double fuelAmount, int numPassengers) {
         super(callsign, characteristics, tasks, fuelAmount);
 
         this.passengerCount = numPassengers;

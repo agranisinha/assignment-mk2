@@ -7,7 +7,8 @@ public class FreightAircraft extends Aircraft {
     private int freightAmount;
     //freight amount in kg
 
-    public FreightAircraft(String callsign, AircraftCharacteristics characteristics, TaskList tasks, double fuelAmount, int freightAmount) {
+    public FreightAircraft(String callsign, AircraftCharacteristics characteristics,
+                           TaskList tasks, double fuelAmount, int freightAmount) {
         super(callsign, characteristics, tasks, fuelAmount);
         this.freightAmount = freightAmount;
     }

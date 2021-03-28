@@ -13,11 +13,11 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
     public static final int MAX_NUM_GATES = 6;
     private List<Gate> gatesList = new ArrayList<Gate>();
     int terminalNumber;
-    private boolean EmergencyState;
+    private boolean emergencyState;
 
     protected Terminal(int terminalNumber) {
         this.terminalNumber = terminalNumber;
-        EmergencyState = false;
+        emergencyState = false;
     }
 
     public int getTerminalNumber() {
@@ -46,15 +46,15 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
     }
 
     public void declareEmergency() {
-        EmergencyState = true;
+        emergencyState = true;
     }
 
     public void clearEmergency() {
-        EmergencyState = false;
+        emergencyState = false;
     }
 
     public boolean hasEmergency() {
-        return EmergencyState;
+        return emergencyState;
     }
 
     public int calculateOccupancyLevel() {
@@ -67,7 +67,7 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
                     freeGates++;
                 }
             }
-            return (int)Math.round((100 - ((double) freeGates / (double)gatesList.size()) * 100));
+            return (int) Math.round((100 - ((double) freeGates / (double) gatesList.size()) * 100));
 
         }
     }

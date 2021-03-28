@@ -12,9 +12,9 @@ public class Gate {
     }
 
     public void parkAircraft(Aircraft aircraft) throws NoSpaceException {
-        if(aircraftAtGate ==null) {
+        if (aircraftAtGate == null) {
             this.aircraftAtGate = aircraft;
-        }else{
+        } else {
             throw new NoSpaceException("There is already an aircraft at gate " + gateNumber);
         }
         //parks a new aircraft at this gate
