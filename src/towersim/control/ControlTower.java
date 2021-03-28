@@ -89,10 +89,10 @@ public class ControlTower implements Tickable {
 
     public Gate findGateOfAircraft(Aircraft targetedAircraft) {
         //placeholder
-        for(int i = 0; i < managedTerminals.size(); i++){
+        for (int i = 0; i < managedTerminals.size(); i++) {
             List<Gate> gateOfTargetedTerminal = managedTerminals.get(i).getGates();
-            for(int j = 0; j < gateOfTargetedTerminal.size(); j++){
-                if(gateOfTargetedTerminal.get(j).getAircraftAtGate() == targetedAircraft){
+            for (int j = 0; j < gateOfTargetedTerminal.size(); j++) {
+                if (gateOfTargetedTerminal.get(j).getAircraftAtGate() == targetedAircraft) {
                     return gateOfTargetedTerminal.get(j);
                 }
             }
