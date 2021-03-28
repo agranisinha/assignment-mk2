@@ -14,61 +14,95 @@ import java.util.List;
 public class ControlTower implements Tickable {
 
     private List<Aircraft> managedAircraft;
-    private List<Terminal> managedTerminals ;
+    private List<Terminal> managedTerminals;
 
-    public ControlTower(){
+    public ControlTower() {
         managedAircraft = new ArrayList<Aircraft>();
         managedTerminals = new ArrayList<Terminal>();
 
     }
 
-    public void addAircraft(Aircraft aircraft)throws NoSuitableGateException{
-        if(aircraft.getCharacteristics().type == AircraftType.HELICOPTER) {
-            if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT || aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD){
-            //try parking at helicopter terminals else throw exception
-            }
-            managedAircraft.add(aircraft);
+    public void addAircraft(Aircraft aircraft) throws NoSuitableGateException {
 
-        }else{
-            if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT || aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD){
-                //try parking at plane terminals else throw exception
+        if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT || aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
+            //try parking at  terminals else throw exception
+            try {
+                Gate suitableGate = findUnoccupiedGate(aircraft);
+                managedAircraft.add(aircraft);
+            } catch (NoSuitableGateException noGateException) {
+                throw noGateException;
             }
+        } else {
             managedAircraft.add(aircraft);
         }
+
     }
 
     public Gate findUnoccupiedGate(Aircraft aircraft) throws NoSuitableGateException {
-        if(aircraft.getCharacteristics().type == AircraftType.AIRPLANE){
+        if (aircraft.getCharacteristics().type == AircraftType.AIRPLANE) {
+            for (int i = 0; i < managedTerminals.size(); i++) {
+                Terminal currentSearched = managedTerminals.get(i);
+                if (currentSearched.getClass() == AirplaneTerminal.class) {
+                    Gate unoccupiedGate;
+                    try {
+                        unoccupiedGate = currentSearched.findUnoccupiedGate();
+                        return unoccupiedGate;
+                    } catch (NoSuitableGateException noGateException) {
+
+                    }
+
+                }
+            }
+            throw new NoSuitableGateException("No free gate of the specified type could be found");
             //is plane
 
-        }else{
+        } else {
+            for (int i = 0; i < managedTerminals.size(); i++) {
+                Terminal currentSearched = managedTerminals.get(i);
+                if (currentSearched.getClass() == HelicopterTerminal.class) {
+                    Gate unoccupiedGate;
+                    try {
+                        unoccupiedGate = currentSearched.findUnoccupiedGate();
+                        return unoccupiedGate;
+                    } catch (NoSuitableGateException noGateException) {
+
+                    }
+
+                }
+            }
+            throw new NoSuitableGateException("No free gate of the specified type could be found");
             //is helicopter
         }
-        return new Gate(-1);
     }
 
-    public List<Aircraft> getAircraft(){
+    public List<Aircraft> getAircraft() {
         return managedAircraft;
     }
 
-    public void addTerminal(Terminal terminal){
+    public void addTerminal(Terminal terminal) {
         managedTerminals.add(terminal);
     }
 
-    public List<Terminal> getTerminals(){
+    public List<Terminal> getTerminals() {
         return managedTerminals;
     }
 
-    public Gate findGateOfAircraft(Aircraft targetedAircraft){
+    public Gate findGateOfAircraft(Aircraft targetedAircraft) {
         //placeholder
-        return new Gate(-1);
+        for(int i = 0; i < managedTerminals.size(); i++){
+            List<Gate> gateOfTargetedTerminal = managedTerminals.get(i).getGates();
+            for(int j = 0; j < gateOfTargetedTerminal.size(); j++){
+                if(gateOfTargetedTerminal.get(j).getAircraftAtGate() == targetedAircraft){
+                    return gateOfTargetedTerminal.get(j);
+                }
+            }
+        }
+        return null;
 
     }
 
 
-
-
-    public void tick(){
+    public void tick() {
 
     }
 }
