@@ -34,7 +34,7 @@ public class TaskList {
 
     public String toString() {
         //placeholder
-        return "TaskList currently on currentTask [" + (currentTask + 1) + "/" + listOfTasks.size() + "]";
+        return "TaskList currently on "+ getCurrentTask().getType() +" [" + (currentTask + 1) + "/" + listOfTasks.size() + "]";
     }
 
 
