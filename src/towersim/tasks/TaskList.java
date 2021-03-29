@@ -10,12 +10,15 @@ public class TaskList {
         listOfTasks = tasks;
     }
 
+
     public Task getCurrentTask() {
+        //System.out.println("current task is" + currentTask + "of type" +
+        // listOfTasks.get(currentTask).getLoadPercent());
         return listOfTasks.get(currentTask);
     }
 
     public Task getNextTask() {
-        if (currentTask == listOfTasks.size()) {
+        if (currentTask == listOfTasks.size()-1) {
             return listOfTasks.get(0);
         } else {
             return listOfTasks.get(currentTask + 1);

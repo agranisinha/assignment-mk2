@@ -11,7 +11,7 @@ public class Task {
 
     public Task(TaskType type, int loadPercentage) {
         this.type = type;
-        loadPercentage = loadPercentage;
+        this.loadPercentage = loadPercentage;
     }
 
     public TaskType getType() {
