@@ -90,7 +90,19 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
 
     public void tick() {
-        //???
+        TaskType currentTaskType = getTaskList().getCurrentTask().getType();
+        if (currentTaskType == TaskType.AWAY) {
+            fuelAmount = fuelAmount - characteristics.fuelCapacity * 0.1;
+            if (fuelAmount < 0) {
+                fuelAmount = 0;
+            }
+        }
+        if (currentTaskType == TaskType.LOAD) {
+            fuelAmount = fuelAmount + characteristics.fuelCapacity / getLoadingTime();
+            if (fuelAmount > characteristics.fuelCapacity) {
+                fuelAmount = characteristics.fuelCapacity;
+            }
+        }
     }
 
     public String toString() {
@@ -98,7 +110,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
         if (emergencyState) {
             return "" + getCharacteristics().type.toString() + " " + callSign + " "
                     + getCharacteristics().toString() + " "
-                    + getTaskList().getCurrentTask().getType()+ " (EMERGENCY)";
+                    + getTaskList().getCurrentTask().getType() + " (EMERGENCY)";
         }
         return "" + getCharacteristics().type.toString() + " " + callSign + " "
                 + getCharacteristics().toString() + " " + getTaskList().getCurrentTask().getType();

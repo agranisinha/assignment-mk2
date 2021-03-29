@@ -43,5 +43,14 @@ public class FreightAircraft extends Aircraft {
 
     public void tick() {
         //placeholder
+        super.tick();
+        if (this.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
+            int loadTarget = (int) Math.round(this.getCharacteristics().freightCapacity * getTaskList().getCurrentTask().getLoadPercent() / 100.0);
+            int loadPerTick = loadTarget / this.getLoadingTime();
+            this.freightAmount = freightAmount + loadPerTick;
+            if (freightAmount > loadTarget) {
+                freightAmount = loadTarget;
+            }
+        }
     }
 }
