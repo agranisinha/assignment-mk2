@@ -19,6 +19,6 @@ public class tests {
                 FreightAircraft testingAircraft = new FreightAircraft("testing", AircraftCharacteristics.BOEING_747_8F,
                         tasks,226117, 0);
                 System.out.println(testingAircraft.getLoadingTime());
-
+                System.out.println(testingAircraft.toString());
         }
 }

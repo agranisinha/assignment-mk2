@@ -73,7 +73,10 @@ public abstract class Terminal implements EmergencyState, OccupancyLevel {
     }
 
     public String toString() {
-        return "";
+        if (emergencyState) {
+            return "Terminal " + terminalNumber + ", " + gatesList.size() + " gates" + "(EMERGENCY)";
+        }
+        return "Terminal " + terminalNumber + ", " + gatesList.size() + " gates";
         //placeholder
     }
 

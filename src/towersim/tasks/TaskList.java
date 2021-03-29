@@ -18,7 +18,7 @@ public class TaskList {
     }
 
     public Task getNextTask() {
-        if (currentTask == listOfTasks.size()-1) {
+        if (currentTask == listOfTasks.size() - 1) {
             return listOfTasks.get(0);
         } else {
             return listOfTasks.get(currentTask + 1);
@@ -34,7 +34,7 @@ public class TaskList {
 
     public String toString() {
         //placeholder
-        return "";
+        return "TaskList currently on currentTask [" + (currentTask + 1) + "/" + listOfTasks.size() + "]";
     }
 
 

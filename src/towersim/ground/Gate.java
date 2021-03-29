@@ -37,7 +37,10 @@ public class Gate {
     }
 
     public String toString() {
-        return "";
+        if(aircraftAtGate == null){
+            return "Gate " + gateNumber + " [empty]";
+        }
+        return "Gate " + gateNumber + " [" + aircraftAtGate.getCallsign()+"]";
     }
 
 }
