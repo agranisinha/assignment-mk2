@@ -20,7 +20,7 @@ public class PassengerAircraft extends Aircraft {
 
     public int getLoadingTime() {
         //placeholder, do after completing tasks
-        int passengerToBeLoaded = (int) (this.getTaskList().getCurrentTask().getLoadPercent() *
+        int passengerToBeLoaded = (int) ((double) this.getTaskList().getCurrentTask().getLoadPercent() *
                 this.getCharacteristics().passengerCapacity)/100;
         int loadingTicks = (int) Math.round(Math.log10(passengerToBeLoaded));
         return loadingTicks;

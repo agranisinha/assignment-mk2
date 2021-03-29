@@ -22,7 +22,7 @@ public class FreightAircraft extends Aircraft {
         //returns number of ticks for freight load,
         // <1000:1, 1000<50000:2, 50000<:3
         //overwrites abstract method in aircraft
-        int loadAmount = (int) (getTaskList().getCurrentTask().getLoadPercent()/100)*getCharacteristics().freightCapacity;
+        int loadAmount = (int) ((double) getTaskList().getCurrentTask().getLoadPercent() / 100) * getCharacteristics().freightCapacity;
         if (loadAmount < 1000) {
             return 1;
         } else if (loadAmount > 50000) {
