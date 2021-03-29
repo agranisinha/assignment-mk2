@@ -95,6 +95,13 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     public String toString() {
         //placeholder
-        return "";
+        if (emergencyState) {
+            return "" + getCharacteristics().type.toString() + " " + callSign + " "
+                    + getCharacteristics().toString() + " "
+                    + getTaskList().getCurrentTask().toString() + " (EMERGENCY)";
+        }
+        return "" + getCharacteristics().type.toString() + " " + callSign + " "
+                + getCharacteristics().toString() + " " + getTaskList().getCurrentTask().toString();
+
     }
 }

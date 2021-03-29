@@ -23,7 +23,12 @@ public class Task {
     }
 
     public String toString() {
-        return "";
+        if(getType() == TaskType.LOAD){
+            return "LOAD at " + loadPercentage+"%";
+        }else{
+            return type.toString();
+        }
+
         //placeholder
     }
 }
