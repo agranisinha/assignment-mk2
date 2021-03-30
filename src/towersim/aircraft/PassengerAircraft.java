@@ -44,7 +44,8 @@ public class PassengerAircraft extends Aircraft {
      * @return occupancy level as a percentage
      */
     public int calculateOccupancyLevel() {
-        return (int) Math.round(passengerCount / this.getCharacteristics().passengerCapacity * 100);
+        return (int) Math.round((double) passengerCount / this.getCharacteristics()
+                .passengerCapacity * 100);
     }
 
     /**
@@ -54,8 +55,8 @@ public class PassengerAircraft extends Aircraft {
      */
     public int getLoadingTime() {
         //placeholder, do after completing tasks
-        int passengerToBeLoaded = (int) ((double) this.getTaskList().getCurrentTask().
-                getLoadPercent() * this.getCharacteristics().passengerCapacity) / 100;
+        int passengerToBeLoaded = (int) ((double) this.getTaskList().getCurrentTask()
+                .getLoadPercent() * this.getCharacteristics().passengerCapacity) / 100;
         int loadingTicks = (int) Math.round(Math.log10(passengerToBeLoaded));
         return loadingTicks;
     }
@@ -80,9 +81,10 @@ public class PassengerAircraft extends Aircraft {
     public void tick() {
         super.tick();
         if (getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
-            int loadTarget = (int) Math.round(this.getCharacteristics().passengerCapacity *
-                    getTaskList().getCurrentTask().getLoadPercent() / 100.0);
+            int loadTarget = (int) Math.round(this.getCharacteristics().passengerCapacity
+                    * getTaskList().getCurrentTask().getLoadPercent() / 100.0);
             int loadPerTick = (int) Math.round(1.0 * loadTarget / this.getLoadingTime());
+            System.out.println(loadPerTick);
             this.passengerCount = passengerCount + loadPerTick;
             if (passengerCount > loadTarget) {
                 passengerCount = loadTarget;

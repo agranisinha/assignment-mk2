@@ -40,7 +40,8 @@ public class FreightAircraft extends Aircraft {
      * @return 100% * (load / capacity) rounded to nearest integer
      */
     public int calculateOccupancyLevel() {
-        return (int) Math.round((freightAmount / this.getCharacteristics().freightCapacity) * 100);
+        return (int) Math.round(((double) freightAmount / this.getCharacteristics()
+                .freightCapacity) * 100);
     }
 
     /**
@@ -59,8 +60,8 @@ public class FreightAircraft extends Aircraft {
         //returns number of ticks for freight load,
         // <1000:1, 1000<50000:2, 50000<:3
         //overwrites abstract method in aircraft
-        int loadAmount = getTaskList().getCurrentTask().getLoadPercent() *
-                getCharacteristics().freightCapacity / 100;
+        int loadAmount = getTaskList().getCurrentTask().getLoadPercent()
+                * getCharacteristics().freightCapacity / 100;
         if (loadAmount == 0) {
             return 0;
         } else if (loadAmount < 1000) {
@@ -98,9 +99,11 @@ public class FreightAircraft extends Aircraft {
         //placeholder
         super.tick();
         if (this.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
-            int loadTarget = (int) Math.round(this.getCharacteristics().freightCapacity *
-                    getTaskList().getCurrentTask().getLoadPercent() / 100.0);
+            int loadTarget = (int) Math.round(this.getCharacteristics().freightCapacity
+                    * getTaskList().getCurrentTask().getLoadPercent() / 100.0);
+
             int loadPerTick = loadTarget / this.getLoadingTime();
+
             this.freightAmount = freightAmount + loadPerTick;
             if (freightAmount > loadTarget) {
                 freightAmount = loadTarget;

@@ -1,7 +1,8 @@
 package towersim.util;
 
 /**
- * Denotes a class that has an inherent capacity and a current level of loading relative to that capacity.
+ * Denotes a class that has an inherent capacity and a current level of loading relative to that
+ * capacity.
  *
  * @author tli14
  */

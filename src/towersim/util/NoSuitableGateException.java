@@ -14,7 +14,8 @@ public class NoSuitableGateException extends Exception {
     }
 
     /**
-     * Constructs a NoSuitableGateException that contains a helpful detail message explaining why the exception occurred.
+     * Constructs a NoSuitableGateException that contains a helpful detail message explaining why
+     * the exception occurred.
      *
      * @param errorMessage detail message
      */

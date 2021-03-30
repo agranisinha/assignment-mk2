@@ -14,7 +14,8 @@ public class NoSpaceException extends Exception {
     }
 
     /**
-     * Constructs a NoSpaceException that contains a helpful detail message explaining why the exception occurred.
+     * Constructs a NoSpaceException that contains a helpful detail message explaining why the
+     * exception occurred.
      *
      * @param errorMessage detail message
      */

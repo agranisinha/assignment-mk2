@@ -4,6 +4,7 @@ import towersim.aircraft.Aircraft;
 import towersim.aircraft.AircraftType;
 import towersim.tasks.Task;
 import towersim.tasks.TaskType;
+import towersim.util.NoSpaceException;
 import towersim.util.NoSuitableGateException;
 import towersim.util.Tickable;
 import towersim.ground.*;
@@ -46,15 +47,25 @@ public class ControlTower implements Tickable {
         if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT
                 || aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
             //try parking at  terminals else throw exception
+            Gate suitableGate = null;
             try {
-                Gate suitableGate = findUnoccupiedGate(aircraft);
-                managedAircraft.add(aircraft);
+                suitableGate = findUnoccupiedGate(aircraft);
+
             } catch (NoSuitableGateException noGateException) {
                 throw noGateException;
             }
-        } else {
-            managedAircraft.add(aircraft);
+            if (suitableGate != null) {
+                try {
+                    suitableGate.parkAircraft(aircraft);
+
+                } catch (NoSpaceException noSpaceException) {
+                    throw new NoSuitableGateException();
+                }
+            }
         }
+
+        managedAircraft.add(aircraft);
+
 
     }
 
