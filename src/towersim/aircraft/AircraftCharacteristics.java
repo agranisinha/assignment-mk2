@@ -62,11 +62,11 @@ public enum AircraftCharacteristics {
      * Constructs a final aircraft type at the initiation of the enum and populate
      * the fields of that specific enum
      *
-     * @param type
-     * @param emptyWeight
-     * @param fuelCapacity
-     * @param passengerCapacity
-     * @param freightCapacity
+     * @param type Type of aircraft.
+     * @param emptyWeight Weight of aircraft with no load or fuel, in kilograms.
+     * @param fuelCapacity Maximum amount of fuel able to be carried, in litres.
+     * @param passengerCapacity Maximum number of passengers able to be carried.
+     * @param freightCapacity Maximum amount of freight able to be carried, in kilograms.
      */
     AircraftCharacteristics(AircraftType type, int emptyWeight, double fuelCapacity,
                             int passengerCapacity, int freightCapacity) {

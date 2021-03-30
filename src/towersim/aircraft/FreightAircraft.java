@@ -49,17 +49,18 @@ public class FreightAircraft extends Aircraft {
      * @return loadingTime
      * The loading time for freight aircraft is given by the following table:
      * <p>
-     * Freight to be loaded (kg)    |   Loading time (ticks)
-     * <1000	                    |   1
-     * 1000 to 50,000	            |   2
-     * >50,000	                    |   3
+     * Freight to be loaded (kg)|Loading time (ticks)
+     * <1000|1
+     * 1000 to 50,000|2
+     * >50,000|3
      * @specifiedBy Aircraft.getLoadingTime
      */
     public int getLoadingTime() {
         //returns number of ticks for freight load,
         // <1000:1, 1000<50000:2, 50000<:3
         //overwrites abstract method in aircraft
-        int loadAmount = getTaskList().getCurrentTask().getLoadPercent() * getCharacteristics().freightCapacity / 100;
+        int loadAmount = getTaskList().getCurrentTask().getLoadPercent() *
+                getCharacteristics().freightCapacity / 100;
         if (loadAmount == 0) {
             return 0;
         } else if (loadAmount < 1000) {
@@ -90,7 +91,6 @@ public class FreightAircraft extends Aircraft {
      *
      * @overrides Aircraft.tick
      * @SpecifiedBy Tickable.tick
-     * @see super.tick() for fuel changes
      * freight is loading onto aircraft at a speed of loadPercentage * capacity / loadtime
      * freight amount will be set to loadPercentage * capacity if the load exceeds it
      */
@@ -98,7 +98,8 @@ public class FreightAircraft extends Aircraft {
         //placeholder
         super.tick();
         if (this.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
-            int loadTarget = (int) Math.round(this.getCharacteristics().freightCapacity * getTaskList().getCurrentTask().getLoadPercent() / 100.0);
+            int loadTarget = (int) Math.round(this.getCharacteristics().freightCapacity *
+                    getTaskList().getCurrentTask().getLoadPercent() / 100.0);
             int loadPerTick = loadTarget / this.getLoadingTime();
             this.freightAmount = freightAmount + loadPerTick;
             if (freightAmount > loadTarget) {

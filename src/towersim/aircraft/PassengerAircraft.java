@@ -25,7 +25,8 @@ public class PassengerAircraft extends Aircraft {
      * @param tasks           task list to be used by aircraft
      * @param fuelAmount      current amount of fuel onboard, in litres
      * @param numPassengers   current number of passengers onboard
-     * @throws IllegalArgumentException if numPassengers < 0 or if numPassengers > passenger capacity
+     * @throws IllegalArgumentException if numPassengers < 0 or if numPassengers >
+     *                                  passenger capacity
      */
     public PassengerAircraft(String callsign, AircraftCharacteristics characteristics,
                              TaskList tasks, double fuelAmount, int numPassengers) {
@@ -37,7 +38,8 @@ public class PassengerAircraft extends Aircraft {
     }
 
     /**
-     * Returns the ratio of passengers onboard to maximum passenger capacity as a percentage between 0 and 100.
+     * Returns the ratio of passengers onboard to maximum passenger capacity as a
+     * percentage between 0 and 100.
      *
      * @return occupancy level as a percentage
      */
@@ -52,8 +54,8 @@ public class PassengerAircraft extends Aircraft {
      */
     public int getLoadingTime() {
         //placeholder, do after completing tasks
-        int passengerToBeLoaded = (int) ((double) this.getTaskList().getCurrentTask().getLoadPercent() *
-                this.getCharacteristics().passengerCapacity) / 100;
+        int passengerToBeLoaded = (int) ((double) this.getTaskList().getCurrentTask().
+                getLoadPercent() * this.getCharacteristics().passengerCapacity) / 100;
         int loadingTicks = (int) Math.round(Math.log10(passengerToBeLoaded));
         return loadingTicks;
     }
@@ -72,14 +74,14 @@ public class PassengerAircraft extends Aircraft {
 
     /**
      * Updates the aircraft's state on each tick of the simulation.
-     *
-     * @see super.tick()
+     * <p>
      * modifies passengerCount as per loading within loadTarget
      */
     public void tick() {
         super.tick();
         if (getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
-            int loadTarget = (int) Math.round(this.getCharacteristics().passengerCapacity * getTaskList().getCurrentTask().getLoadPercent() / 100.0);
+            int loadTarget = (int) Math.round(this.getCharacteristics().passengerCapacity *
+                    getTaskList().getCurrentTask().getLoadPercent() / 100.0);
             int loadPerTick = (int) Math.round(1.0 * loadTarget / this.getLoadingTime());
             this.passengerCount = passengerCount + loadPerTick;
             if (passengerCount > loadTarget) {

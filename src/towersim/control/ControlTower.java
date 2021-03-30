@@ -43,8 +43,8 @@ public class ControlTower implements Tickable {
      */
     public void addAircraft(Aircraft aircraft) throws NoSuitableGateException {
 
-        if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT ||
-                aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
+        if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT
+                || aircraft.getTaskList().getCurrentTask().getType() == TaskType.LOAD) {
             //try parking at  terminals else throw exception
             try {
                 Gate suitableGate = findUnoccupiedGate(aircraft);
@@ -131,7 +131,8 @@ public class ControlTower implements Tickable {
     }
 
     /**
-     * Finds the gate where the given aircraft is parked, and returns null if the aircraft is not parked at any gate in any terminal.
+     * Finds the gate where the given aircraft is parked, and returns null if the aircraft
+     * is not parked at any gate in any terminal.
      *
      * @param targetedAircraft aircraft whose gate to find
      * @return gate gate occupied by the given aircraft; or null if none exists
