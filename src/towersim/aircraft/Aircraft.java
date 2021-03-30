@@ -5,6 +5,8 @@ import towersim.tasks.*;
 
 /**
  * Mother class of all aircraft types
+ *
+ * @author tli14
  */
 public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickable {
     /**
@@ -29,7 +31,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
     private AircraftCharacteristics characteristics;
 
     /**
-     *custom object list of tasks
+     * custom object list of tasks
      */
     private TaskList listOfTasks;
 
@@ -45,11 +47,11 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
      * @param characteristics characteristics that describe this aircraft
      * @param tasks           task list to be used by aircraft
      * @param fuelAmount      current fuel amount of the aircraft in litres
-     * @exception IllegalArgumentException if fuelAmount < 0 or if fuelAmount > fuel capacity
+     * @throws IllegalArgumentException if fuelAmount < 0 or if fuelAmount > fuel capacity
      */
     protected Aircraft(String callsign, AircraftCharacteristics characteristics,
                        TaskList tasks, double fuelAmount) {
-        if(fuelAmount < 0 || fuelAmount > characteristics.fuelCapacity){
+        if (fuelAmount < 0 || fuelAmount > characteristics.fuelCapacity) {
             throw new IllegalArgumentException();
         }
         this.callSign = callsign;
@@ -76,6 +78,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * retrieves state of emergency of the aircraft
+     *
      * @return emergencyState
      */
     public boolean hasEmergency() {
@@ -87,7 +90,8 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
     //getters
 
     /**
-     *retrieves aircraft callsign
+     * retrieves aircraft callsign
+     *
      * @return callSign
      */
     public String getCallsign() {
@@ -96,6 +100,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Retrieves aircraft characteristics
+     *
      * @return characteristics
      */
     public AircraftCharacteristics getCharacteristics() {
@@ -104,6 +109,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Retrieves the current fuel amount held by aircraft in Litres
+     *
      * @return fuelAmount
      */
     public double getFuelAmount() {
@@ -112,6 +118,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Returns the percentage value of fuel remaining for this aircraft
+     *
      * @return fuelPercentage
      */
     public int getFuelPercentRemaining() {
@@ -121,12 +128,14 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * retrieves loading time in subclass
+     *
      * @return loadingTime
      */
     public abstract int getLoadingTime();
 
     /**
      * Retrieves the tasklist of this aircraft
+     *
      * @return listOfTasks
      */
     public TaskList getTaskList() {
@@ -135,6 +144,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Return total weight of the aircraft including fuel, and aircraft weight, ignoring load
+     *
      * @return weight such weight = fuelWeight + aircraftWeight
      */
     public double getTotalWeight() {
@@ -147,9 +157,9 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Updates the aircraft's state on each tick of the simulation.
-     *
+     * <p>
      * Aircraft lose 10% of total fuel capacity or until empty each tick if current task is away
-     *
+     * <p>
      * If the aircraft's current task is LOAD,
      * the amount of fuel should increase by capacity/loadingTime litres of fuel each tick
      * until fuel capacity is reached
@@ -172,6 +182,7 @@ public abstract class Aircraft implements EmergencyState, OccupancyLevel, Tickab
 
     /**
      * Returns the human-readable string representation of this aircraft.
+     *
      * @return string of format "aircraftType callsign model currentTask" or
      * "aicraftType callsign model currentTask (EMERGENCY)" if in emergency
      * @overrides Object.toString

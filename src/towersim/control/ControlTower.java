@@ -11,17 +11,36 @@ import towersim.ground.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Control tower class
+ *
+ * @author tli14
+ */
 public class ControlTower implements Tickable {
-
+    /**
+     * List of aircraft controlled by this control tower
+     */
     private List<Aircraft> managedAircraft;
+    /**
+     * list of terminals controlled by this control tower
+     */
     private List<Terminal> managedTerminals;
 
+    /**
+     * Creates a new ControlTower.
+     */
     public ControlTower() {
         managedAircraft = new ArrayList<Aircraft>();
         managedTerminals = new ArrayList<Terminal>();
 
     }
 
+    /**
+     * Adds the given aircraft to the jurisdiction of this control tower.
+     *
+     * @param aircraft Aircraft to be added
+     * @throws NoSuitableGateException if no gate is suitable for adding aircraft
+     */
     public void addAircraft(Aircraft aircraft) throws NoSuitableGateException {
 
         if (aircraft.getTaskList().getCurrentTask().getType() == TaskType.WAIT ||
@@ -39,6 +58,13 @@ public class ControlTower implements Tickable {
 
     }
 
+    /**
+     * Attempts to find an unoccupied gate in a compatible terminal for the given aircraft.
+     *
+     * @param aircraft aircraft for which to find gate
+     * @return gate gate for given aircraft if one exists
+     * @throws NoSuitableGateException if no suitable gate could be found
+     */
     public Gate findUnoccupiedGate(Aircraft aircraft) throws NoSuitableGateException {
         if (aircraft.getCharacteristics().type == AircraftType.AIRPLANE) {
             for (int i = 0; i < managedTerminals.size(); i++) {
@@ -77,18 +103,39 @@ public class ControlTower implements Tickable {
         throw new NoSuitableGateException();
     }
 
+    /**
+     * returns list of all managed aircraft
+     *
+     * @return managedAircraft
+     */
     public List<Aircraft> getAircraft() {
         return managedAircraft;
     }
 
+    /**
+     * Adds the given terminal to the jurisdiction of this control tower.
+     *
+     * @param terminal terminal to add
+     */
     public void addTerminal(Terminal terminal) {
         managedTerminals.add(terminal);
     }
 
+    /**
+     * returns list of all managed terminals
+     *
+     * @return managedTerminals
+     */
     public List<Terminal> getTerminals() {
         return managedTerminals;
     }
 
+    /**
+     * Finds the gate where the given aircraft is parked, and returns null if the aircraft is not parked at any gate in any terminal.
+     *
+     * @param targetedAircraft aircraft whose gate to find
+     * @return gate gate occupied by the given aircraft; or null if none exists
+     */
     public Gate findGateOfAircraft(Aircraft targetedAircraft) {
         //placeholder
         for (int i = 0; i < managedTerminals.size(); i++) {
@@ -103,8 +150,12 @@ public class ControlTower implements Tickable {
 
     }
 
-
+    /**
+     * Advances the simulation by one tick.
+     */
     public void tick() {
-
+        for (Aircraft loopedAircraft : managedAircraft) {
+            loopedAircraft.tick();
+        }
     }
 }

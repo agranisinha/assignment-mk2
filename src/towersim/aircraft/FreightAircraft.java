@@ -2,6 +2,11 @@ package towersim.aircraft;
 
 import towersim.tasks.*;
 
+/**
+ * Freight aircraft extending Aircraft
+ *
+ * @author tli14
+ */
 public class FreightAircraft extends Aircraft {
 
     /**
@@ -40,14 +45,14 @@ public class FreightAircraft extends Aircraft {
 
     /**
      * Returns the number of ticks required to load the aircraft at the gate.
+     *
      * @return loadingTime
      * The loading time for freight aircraft is given by the following table:
-     *
+     * <p>
      * Freight to be loaded (kg)    |   Loading time (ticks)
      * <1000	                    |   1
      * 1000 to 50,000	            |   2
      * >50,000	                    |   3
-     *
      * @specifiedBy Aircraft.getLoadingTime
      */
     public int getLoadingTime() {
@@ -68,6 +73,7 @@ public class FreightAircraft extends Aircraft {
 
     /**
      * Returns the total weight of the aircraft in its current state.
+     *
      * @return totalWeight sum of fuelWeight, aircraftWeight and freightAmount
      * @overrides Aircraft.getTotalWeight
      */
@@ -80,12 +86,13 @@ public class FreightAircraft extends Aircraft {
     }
 
     /**
-     *Updates the aircraft's state on each tick of the simulation.
+     * Updates the aircraft's state on each tick of the simulation.
+     *
+     * @overrides Aircraft.tick
+     * @SpecifiedBy Tickable.tick
      * @see super.tick() for fuel changes
      * freight is loading onto aircraft at a speed of loadPercentage * capacity / loadtime
      * freight amount will be set to loadPercentage * capacity if the load exceeds it
-     * @overrides Aircraft.tick
-     * @SpecifiedBy Tickable.tick
      */
     public void tick() {
         //placeholder

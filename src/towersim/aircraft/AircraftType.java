@@ -4,6 +4,8 @@ import java.io.*;
 
 /**
  * Enum storing the constants type of aircraft
+ *
+ * @author tli14
  */
 public enum AircraftType {
     /**
