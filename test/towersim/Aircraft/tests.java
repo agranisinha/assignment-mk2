@@ -1,5 +1,6 @@
 package towersim.Aircraft;
 
+import towersim.aircraft.Aircraft;
 import towersim.aircraft.AircraftCharacteristics;
 import towersim.aircraft.FreightAircraft;
 import towersim.aircraft.PassengerAircraft;
@@ -20,6 +21,8 @@ public class tests {
         public static void main(String[] args) throws NoSpaceException {
                 List<Task> list = new ArrayList<>();
                 list.add(new Task(TaskType.LOAD, 100));
+                list.add(new Task(TaskType.TAKEOFF));
+
                 TaskList tasks = new TaskList(list);
 
                 FreightAircraft testingAircraft = new FreightAircraft("testing",
@@ -60,5 +63,19 @@ public class tests {
                 }
                 System.out.println(terminal1.toString());
                 System.out.println(gate1.toString());
+                System.out.println(tasks.toString());
+                tasks.moveToNextTask();
+
+                testingAircraft.tick();
+                System.out.println(testingAircraft.toString());
+                try {
+                        testTower.addAircraft(testingAircraft2);
+                } catch (NoSuitableGateException e) {
+                        e.printStackTrace();
+                }
+                System.out.println("-------------------");
+                for(Aircraft loop: testTower.getAircraft()){
+                        System.out.println(loop.toString());
+                }
         }
 }
