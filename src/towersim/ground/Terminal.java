@@ -1,6 +1,5 @@
 package towersim.ground;
 
-import towersim.aircraft.AircraftType;
 import towersim.util.EmergencyState;
 import towersim.util.NoSpaceException;
 import towersim.util.NoSuitableGateException;

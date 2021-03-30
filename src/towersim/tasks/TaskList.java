@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * Creates a new TaskList with the given list of tasks.
+ * @author tli14
  */
 public class TaskList {
     /**

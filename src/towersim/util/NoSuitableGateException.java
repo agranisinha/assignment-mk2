@@ -1,10 +1,23 @@
 package towersim.util;
 
+/**
+ * Exception thrown when there is no suitable gate available for an aircraft.
+ *
+ * @author tli14
+ */
 public class NoSuitableGateException extends Exception {
+    /**
+     * Constructs a NoSuitableGateException with no detail message.
+     */
     public NoSuitableGateException() {
         super();
     }
 
+    /**
+     * Constructs a NoSuitableGateException that contains a helpful detail message explaining why the exception occurred.
+     *
+     * @param errorMessage detail message
+     */
     public NoSuitableGateException(String errorMessage) {
         super(errorMessage);
     }

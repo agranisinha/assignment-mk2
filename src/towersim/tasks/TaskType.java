@@ -2,6 +2,10 @@ package towersim.tasks;
 
 import java.lang.*;
 
+/**
+ * Enum to represent the possible types of tasks an aircraft can have.
+ * @author tli14
+ */
 public enum TaskType {
     /**
      * AWAY means that aircraft are either flying or at other airports.
