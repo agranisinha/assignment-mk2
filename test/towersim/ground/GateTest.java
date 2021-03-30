@@ -53,7 +53,7 @@ public class GateTest {
      * Test for parking an aircraft at testing gate
      */
     @Test
-    public void parkAircraftTest() {
+    public void parkGetAircraftTest() {
         testingGate = new Gate(1);
         try {
             testingGate.parkAircraft(testingAircraft2);
