@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * Creates a new TaskList with the given list of tasks.
+ *
  * @author tli14
  */
 public class TaskList {
@@ -29,12 +30,14 @@ public class TaskList {
     /**
      * Returns the current task in the list.
      *
-     * @return current task
+     * @return current task or null if empty
      */
     public Task getCurrentTask() {
-        //System.out.println("current task is" + currentTask + "of type" +
-        // listOfTasks.get(currentTask).getLoadPercent());
-        return listOfTasks.get(currentTask);
+        if (listOfTasks.size() == 0) {
+            return null;
+        } else {
+            return listOfTasks.get(currentTask);
+        }
     }
 
     /**
